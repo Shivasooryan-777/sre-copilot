@@ -3,10 +3,12 @@
 All Pydantic schemas and tool contracts live here so two sessions never
 invent two different shapes for the same thing.
 """
-
 from __future__ import annotations
 
-from typing import Any, Dict, Literal
+
+from typing import List
+
+from typing import Any, Dict, Literal, Optional, Union
 
 from pydantic import BaseModel, Field
 
@@ -51,6 +53,31 @@ class ToolResult(BaseModel):
     message: str
     data: Dict[str, Any] = Field(default_factory=dict)
 
+class IncidentObservation(BaseModel):
+    """
+    Structured output of the Perceive stage.
+
+    This is the agent's deterministic view of the incident file before
+    asking the LLM for a plan.
+    """
+
+    source: str = ""
+    raw_text: str = ""
+    service: str = "unknown"
+    symptoms: List[str] = []
+    severity_hint: str = "unknown"
+    summary: str = ""
+
+    @classmethod
+    def safe_default(cls, source: str = "", raw_text: str = "") -> "IncidentObservation":
+        return cls(
+            source=source,
+            raw_text=raw_text[:1000],
+            service="unknown",
+            symptoms=[],
+            severity_hint="unknown",
+            summary="Perception unavailable or insufficient data.",
+        )
 
 TOOL_SIGNATURES: Dict[str, str] = {
     "check_service_health": (
