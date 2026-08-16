@@ -1,0 +1,8 @@
+2026-06-14T09:12:03Z app=payments-api level=INFO  msg="request completed" route=/checkout latency_ms=182
+2026-06-14T09:12:41Z app=payments-api level=WARN  msg="slow query detected" query="SELECT * FROM orders WHERE user_id=$1" duration_ms=4210
+2026-06-14T09:13:02Z app=payments-api level=ERROR msg="db connection timeout" host=pg-primary:5432 timeout_ms=5000 attempts=3
+2026-06-14T09:13:07Z app=payments-api level=ERROR msg="db connection timeout" host=pg-primary:5432 timeout_ms=5000 attempts=4
+2026-06-14T09:13:12Z app=payments-api level=WARN  msg="connection pool exhausted" pool_size=20 active=20 idle=0 waiting=37
+2026-06-14T09:13:30Z app=payments-api level=ERROR msg="request failed" route=/checkout status=503 err="could not obtain db connection"
+2026-06-14T09:14:01Z app=payments-api level=ERROR msg="db connection timeout" host=pg-primary:5432 timeout_ms=5000 attempts=5
+2026-06-14T09:14:15Z app=payments-api level=WARN  msg="health check degraded" db=unreachable cache=ok

@@ -1,0 +1,10 @@
+2026-06-14T18:05:01Z svc=notify-worker level=INFO  msg="service starting" attempt=1
+2026-06-14T18:05:03Z svc=notify-worker level=ERROR msg="unhandled exception" err="ConnectionRefusedError: broker:5672"
+2026-06-14T18:05:03Z svc=notify-worker level=ERROR msg="service exited" code=1
+2026-06-14T18:05:08Z svc=notify-worker level=INFO  msg="service starting" attempt=2
+2026-06-14T18:05:10Z svc=notify-worker level=ERROR msg="unhandled exception" err="ConnectionRefusedError: broker:5672"
+2026-06-14T18:05:10Z svc=notify-worker level=ERROR msg="service exited" code=1
+2026-06-14T18:05:15Z svc=notify-worker level=INFO  msg="service starting" attempt=3
+2026-06-14T18:05:17Z svc=notify-worker level=ERROR msg="unhandled exception" err="ConnectionRefusedError: broker:5672"
+2026-06-14T18:05:17Z svc=notify-worker level=ERROR msg="service exited" code=1
+2026-06-14T18:05:22Z supervisor level=WARN msg="crash loop detected" svc=notify-worker restarts_in_60s=3

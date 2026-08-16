@@ -1,0 +1,8 @@
+2026-06-14T11:02:10Z app=cache-worker level=INFO  msg="worker started" pid=1123 rss_mb=210
+2026-06-14T11:32:10Z app=cache-worker level=INFO  msg="memory sample" pid=1123 rss_mb=480
+2026-06-14T12:02:10Z app=cache-worker level=INFO  msg="memory sample" pid=1123 rss_mb=760
+2026-06-14T12:32:10Z app=cache-worker level=WARN  msg="memory sample" pid=1123 rss_mb=1180 gc_pressure=high
+2026-06-14T13:02:10Z app=cache-worker level=WARN  msg="memory sample" pid=1123 rss_mb=1610 gc_pressure=high
+2026-06-14T13:20:44Z app=cache-worker level=ERROR msg="allocation failed" err="MemoryError: unable to allocate 64MB block"
+2026-06-14T13:21:02Z app=cache-worker level=ERROR msg="oom risk" pid=1123 rss_mb=1900 limit_mb=2048
+2026-06-14T13:21:30Z app=cache-worker level=WARN  msg="health check degraded" cpu=ok mem=critical

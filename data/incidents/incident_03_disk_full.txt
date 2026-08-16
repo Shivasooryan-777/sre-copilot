@@ -1,0 +1,7 @@
+2026-06-14T15:40:12Z app=log-shipper level=INFO  msg="rotating logs" path=/var/log/app/access.log
+2026-06-14T15:40:13Z app=log-shipper level=ERROR msg="write failed" path=/var/log/app/access.log err="No space left on device (os error 28)"
+2026-06-14T15:40:14Z host=node-3 level=WARN  msg="disk usage" mount=/var/log used_pct=98
+2026-06-14T15:41:02Z app=log-shipper level=ERROR msg="write failed" path=/var/log/app/error.log err="No space left on device (os error 28)"
+2026-06-14T15:42:10Z app=payments-api level=ERROR msg="failed to persist audit record" err="ENOSPC"
+2026-06-14T15:43:00Z host=node-3 level=ERROR msg="disk usage" mount=/var/log used_pct=99
+2026-06-14T15:44:21Z app=log-shipper level=WARN  msg="health check degraded" disk=critical
