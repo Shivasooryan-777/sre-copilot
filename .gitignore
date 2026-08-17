@@ -1,27 +1,16 @@
-# Virtual environments
+# Local environment
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
 .venv/
 venv/
 env/
 
-# Secrets — never commit
-.env
-
-# Python bytecode
-__pycache__/
-*.py[cod]
-*.egg-info/
-
-# Tooling caches
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-
-# Generated runtime logs (folder kept via .gitkeep)
-logs/*.log
-logs/*.jsonl
-
-# OS / editor junk
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
+# Generated logs
+logs/*
+!logs/.gitkeep
