@@ -23,6 +23,12 @@ SERVICE_PATTERNS = [
     r"application\s*[:=]\s*([A-Za-z0-9._-]+)",
 ]
 
+_SVC_KEY_VALUE_PATTERNS = [
+    r"\bsvc=(?P<svc>[A-Za-z0-9_.-]+)",
+    r"\bservice=(?P<svc>[A-Za-z0-9_.-]+)",
+    r"\bservice_name=(?P<svc>[A-Za-z0-9_.-]+)",
+    r"\bservice:\s*(?P<svc>[A-Za-z0-9_.-]+)",
+]
 
 FILENAME_SERVICE_HINTS = {
     "db": "database",
@@ -56,23 +62,19 @@ def _first_nonempty_line(text: str) -> str:
 
 
 def _extract_service(text: str) -> str:
-    lowered = text.lower()
+    for pattern in _SVC_KEY_VALUE_PATTERNS:
+        match = re.search(pattern, text, flags=re.IGNORECASE)
+        if match:
+            return match.group("svc").strip()
 
     for pattern in SERVICE_PATTERNS:
         match = re.search(pattern, text, flags=re.IGNORECASE)
         if match:
-            return match.group(1).strip().strip("'\"")
-
-    # Lightweight fallback hints.
-    if "payments-api" in lowered:
-        return "payments-api"
-    if "postgres" in lowered or "database" in lowered or "mysql" in lowered:
-        return "database"
-    if "web-frontend" in lowered:
-        return "web-frontend"
+            for group in match.groups():
+                if group:
+                    return group.strip()
 
     return ""
-
 
 def _infer_service_from_filename(stem: str) -> str:
     lowered = stem.lower()
